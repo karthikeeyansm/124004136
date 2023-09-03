@@ -24,7 +24,7 @@ def home(request):
     response=requests.get(url,headers=headers)
     response_data=response.json()
     try:
-        if("message" in response_data and response_data['message'].find('token is expired')!=-1):
+        if(response_data['message'].find('token is expired')!=-1):
             auth_response=requests.post("http://20.244.56.144/train/auth",json=data)
             token=auth_response.json()['access_token']
             print(token)
